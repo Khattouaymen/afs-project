@@ -1,38 +1,37 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
-export default function Reveal({ children, className = "", delay = 0 }) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+export default function Reveal({ children, className = "", delay = 0, triggerOnce = true, slide = "up" }) {
+  const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
+  const slideVariants = {
+    hidden: {
+      opacity: 0,
+      y: slide === "up" ? 40 : slide === "down" ? -40 : 0,
+      x: slide === "left" ? 40 : slide === "right" ? -40 : 0
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: delay / 1000 }
+    }
+  };
 
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-      } ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+    <motion.div
+      variants={slideVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: triggerOnce, margin: "-10%" }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

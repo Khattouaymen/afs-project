@@ -5,12 +5,24 @@ import Link from "next/link";
 import { useState } from "react";
 import { getAssociationOverview } from "@/lib/content";
 
+function MenuIcon({ open }) {
+  return open ? (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  ) : (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}
+
 export default function Navbar({ items }) {
   const [open, setOpen] = useState(false);
   const association = getAssociationOverview();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-afs-line/70 bg-white/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-afs-line/70 bg-white/85 backdrop-blur-xl">
       <div className="container-shell py-4">
         <div className="flex min-h-[44px] items-center justify-between gap-6">
           <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
@@ -23,7 +35,7 @@ export default function Navbar({ items }) {
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-6 lg:flex">
+          <nav className="hidden items-center gap-6 lg:flex" aria-label="Navigation principale">
             {items.map((item) => (
               <Link
                 key={item.href}
@@ -36,23 +48,25 @@ export default function Navbar({ items }) {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link href="/contact" className="button-primary hidden sm:inline-flex">
+            <Link href="/#contact" className="button-primary hidden sm:inline-flex">
               Contact
             </Link>
             <button
               type="button"
-              aria-label="Ouvrir le menu"
+              aria-controls="mobile-navigation"
+              aria-expanded={open}
+              aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
               onClick={() => setOpen((current) => !current)}
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-afs-line bg-white/90 text-afs-primary lg:hidden"
             >
-              <span className="text-xl">{open ? "×" : "≡"}</span>
+              <MenuIcon open={open} />
             </button>
           </div>
         </div>
 
         {open ? (
-          <div className="mt-4 rounded-3xl border border-afs-line bg-white p-4 shadow-soft lg:hidden">
-            <nav className="grid gap-3">
+          <div id="mobile-navigation" className="mt-4 rounded-3xl border border-afs-line bg-white p-4 shadow-soft lg:hidden">
+            <nav className="grid gap-3" aria-label="Navigation mobile">
               {items.map((item) => (
                 <Link
                   key={item.href}
@@ -63,7 +77,7 @@ export default function Navbar({ items }) {
                   {item.label}
                 </Link>
               ))}
-              <Link href="/contact" onClick={() => setOpen(false)} className="button-primary mt-2 sm:hidden">
+              <Link href="/#contact" onClick={() => setOpen(false)} className="button-primary mt-2 sm:hidden">
                 Contact
               </Link>
             </nav>

@@ -7,6 +7,26 @@ export const contact = {
       label: "Instagram",
       handle: "ask_for_success",
       url: "https://www.instagram.com/ask_for_success"
+    },
+    facebook: {
+      label: "Facebook",
+      handle: "",
+      url: ""
+    },
+    tiktok: {
+      label: "TikTok",
+      handle: "",
+      url: ""
+    },
+    linkedin: {
+      label: "LinkedIn",
+      handle: "ask-for-success-999037317",
+      url: "https://ma.linkedin.com/in/ask-for-success-999037317"
+    },
+    youtube: {
+      label: "YouTube",
+      handle: "@AskFor.Success",
+      url: "https://www.youtube.com/@AskFor.Success"
     }
   }
 };

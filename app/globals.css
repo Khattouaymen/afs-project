@@ -11,6 +11,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 8rem;
 }
 
 @keyframes orbFloat {
@@ -44,9 +45,23 @@ h4 {
   color: #222222;
 }
 
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid rgba(91, 45, 142, 0.35);
+    outline-offset: 3px;
+  }
+}
+
 @layer components {
   .container-shell {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .skip-link {
+    @apply sr-only fixed left-4 top-4 z-[100] rounded-full bg-afs-primary px-4 py-3 text-sm font-semibold text-white shadow-lg focus:not-sr-only;
   }
 
   .eyebrow {
@@ -83,6 +98,14 @@ h4 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 
   .mauve-orb {
