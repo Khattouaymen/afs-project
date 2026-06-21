@@ -1,97 +1,33 @@
-# AFS M01 Frontend
+# AFS M01 - Flask
 
-Frontend Next.js du module M01 "Presentation institutionnelle" pour Ask for Success.
+Projet institutionnel Ask for Success en version Flask uniquement.
 
 ## Arborescence
 ```text
 .
-|-- app
-|   |-- globals.css
-|   |-- layout.js
-|   `-- page.js
-|-- components
-|   |-- ActionCard.js
-|   |-- ContactForm.js
-|   |-- ContactInfo.js
-|   |-- CTASection.js
-|   |-- Footer.js
-|   |-- GalleryCard.js
-|   |-- HeroSection.js
-|   |-- Icons.js
-|   |-- ImpactBoard.js
-|   |-- ImpactPillarCard.js
-|   |-- Navbar.js
-|   |-- PageHero.js
-|   |-- PartnerLogoCloud.js
-|   |-- PartnerMarquee.js
-|   |-- Reveal.js
-|   |-- SectionTitle.js
-|   |-- StatCard.js
-|   |-- SummaryIconCard.js
-|   |-- TeamCard.js
-|   |-- TeamPreviewCard.js
-|   |-- TopBar.js
-|   `-- ValueCard.js
-|-- data
-|   |-- actions.js
-|   |-- association.js
-|   |-- contact.js
-|   |-- gallery.js
-|   |-- navigation.js
-|   |-- partners.js
-|   |-- stats.js
-|   |-- team.js
-|   `-- testimonials.js
-|-- lib
-|   `-- content.js
+|-- app_flask.py
+|-- content.py
+|-- templates
+|   |-- base.html
+|   `-- index.html
 |-- public
-|   `-- images
-|       |-- partners
-|       `-- pdf
-|-- jsconfig.json
-|-- next.config.js
-|-- package.json
-|-- postcss.config.js
-|-- README.md
-`-- tailwind.config.js
+|   |-- images
+|   |   |-- partners
+|   |   `-- pdf
+|   `-- flask
+|       |-- css
+|       |   `-- site.css
+|       `-- js
+|           `-- site.js
+|-- requirements.txt
+`-- README.md
 ```
 
 ## Dependances
 
-- `next`
-- `react`
-- `react-dom`
-- `framer-motion`
-- `clsx`
-- `tailwind-merge`
-- `tailwindcss`
-- `postcss`
-- `autoprefixer`
+- `Flask==3.1.1`
 
-## Lancement
-
-```bash
-npm install
-npm run dev
-```
-
-Ensuite ouvrir [http://localhost:3000](http://localhost:3000).
-
-## Version Flask (frontend conserve)
-
-Une version Flask a ete ajoutee pour servir le meme contenu visuel avec les memes assets (`public/images`).
-
-### Fichiers ajoutes
-
-- `app_flask.py`
-- `content.py`
-- `templates/base.html`
-- `templates/index.html`
-- `public/flask/css/site.css`
-- `public/flask/js/site.js`
-- `requirements.txt`
-
-### Lancement Flask
+## Lancement (Windows)
 
 ```bash
 python -m venv .venv
@@ -100,12 +36,10 @@ pip install -r requirements.txt
 python app_flask.py
 ```
 
-Ensuite ouvrir [http://localhost:5000](http://localhost:5000).
+Puis ouvrir [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
-## Notes d'architecture
+## Notes
 
-- `data/` contient uniquement les donnees mockees locales
-- `lib/content.js` sert de couche de lecture pour faciliter un futur branchement backend
-- les pages `app/` restent legeres et consomment des composants reutilisables
-- le frontend Next.js historique reste disponible
-- une version Flask server-side est disponible via `app_flask.py`
+- Les assets statiques sont servis depuis `public/`.
+- Le contenu de la page est centralise dans `content.py`.
+- Le rendu HTML est dans `templates/`.

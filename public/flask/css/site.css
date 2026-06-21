@@ -8,10 +8,19 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 8rem;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(156, 39, 176, 0.12), transparent 30%),
     radial-gradient(circle at top right, rgba(91, 45, 142, 0.1), transparent 24%),
@@ -191,9 +200,9 @@ textarea:focus-visible {
 
 .hero-float-badge-a {
   position: absolute;
-  right: -6rem;
+  right: -7rem;
   top: -6rem;
-  transform: translateX(50%) rotate(-5deg);
+  transform: rotate(-5deg);
   animation: heroBadgeDriftA 6s ease-in-out infinite;
 }
 
@@ -224,10 +233,10 @@ textarea:focus-visible {
 @keyframes heroBadgeDriftA {
   0%,
   100% {
-    transform: translateX(50%) translateY(0) rotate(-5deg);
+    transform: translateY(0) rotate(-5deg);
   }
   50% {
-    transform: translateX(50%) translateY(-12px) rotate(-5deg);
+    transform: translateY(-8px) rotate(-5deg);
   }
 }
 
