@@ -11,7 +11,7 @@ export default function TeamPreviewCard({ member }) {
         </div>
       </div>
       <p className="mt-5 text-sm leading-7 text-afs-text/75">{member.focus}</p>
-      <p className="mt-4 text-sm italic leading-7 text-afs-primary/80">"{member.quote}"</p>
+      <p className="mt-4 text-sm italic leading-7 text-afs-primary/80">&quot;{member.quote}&quot;</p>
     </article>
   );
 }

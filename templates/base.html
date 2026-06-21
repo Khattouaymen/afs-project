@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ association.description }}" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              afs: {
+                primary: "#5B2D8E",
+                accent: "#9C27B0",
+                text: "#222222",
+                muted: "#F5F5F5",
+                soft: "#F7F1FB",
+                line: "#E8DFF2"
+              }
+            },
+            boxShadow: {
+              soft: "0 20px 45px -25px rgba(91, 45, 142, 0.35)"
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='flask/css/site.css') }}" />
+  </head>
+  <body class="bg-white text-afs-text antialiased">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <div class="relative min-h-screen bg-white">
+      <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[36rem] bg-[radial-gradient(circle_at_top,rgba(156,39,176,0.22),transparent_45%)]"></div>
+
+      <div class="border-b border-white/10 bg-[#1A0B2D] text-white">
+        <div class="container-shell flex flex-col gap-3 py-3 text-[11px] uppercase tracking-[0.18em] sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-white/80">
+          <span>{{ contact.city }}</span>
+          <a href="mailto:{{ contact.email }}" class="transition hover:text-white">{{ contact.email }}</a>
+          <a href="tel:{{ contact.phones[0] }}" class="text-sm font-semibold tracking-[0.14em] text-white transition hover:text-white sm:text-[13px]">{{ contact.phones[0] }}</a>
+          </div>
+          <div class="flex items-center gap-2 text-white/85">
+          {% for social in contact.socials %}
+          <a href="{{ social.url }}" target="_blank" rel="noreferrer" aria-label="{{ social.label }}" title="{{ social.label }}" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/85 transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 hover:text-white">
+            {% if social.label == 'Instagram' %}
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.8" fill="currentColor" stroke="none"/></svg>
+            {% elif social.label == 'Facebook' %}
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M13.5 21v-7h2.6l.4-3h-3v-1.9c0-.9.3-1.6 1.6-1.6h1.5V5.1c-.3 0-1.1-.1-2.2-.1-2.2 0-3.8 1.3-3.8 3.9V11H8v3h2.7v7h2.8Z"/></svg>
+            {% elif social.label == 'TikTok' %}
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M14.8 3c.4 1.4 1.2 2.5 2.4 3.2.9.6 1.9.9 3 .9v2.8c-1.4 0-2.7-.4-3.9-1v5.6a6 6 0 1 1-6-6c.4 0 .8 0 1.2.1v2.9a3.2 3.2 0 1 0 1.9 2.9V3h1.4Z"/></svg>
+            {% elif social.label == 'LinkedIn' %}
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M6.1 8.2a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4ZM4.8 9.8h2.7V19H4.8V9.8Zm4.5 0H12v1.3h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7V19h-2.7v-4.3c0-1 0-2.3-1.4-2.3s-1.6 1.1-1.6 2.2V19H9.3V9.8Z"/></svg>
+            {% elif social.label == 'YouTube' %}
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M21.4 8.2a2.9 2.9 0 0 0-2-2C17.6 5.7 12 5.7 12 5.7s-5.6 0-7.4.5a2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .6 3.8 2.9 2.9 0 0 0 2 2c1.8.5 7.4.5 7.4.5s5.6 0 7.4-.5a2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12a30 30 0 0 0-.6-3.8ZM10.2 15.4V8.6l5 3.4-5 3.4Z"/></svg>
+            {% else %}
+            <span class="text-[10px] font-semibold">{{ social.label[:2] }}</span>
+            {% endif %}
+          </a>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <header class="sticky top-0 z-40 border-b border-afs-line/70 bg-white/85 backdrop-blur-xl">
+        <div class="container-shell py-4">
+          <div class="flex min-h-[44px] items-center justify-between gap-6">
+            <a href="#accueil" class="flex items-center gap-3">
+              <div class="relative h-12 w-12 overflow-hidden rounded-2xl border border-afs-line bg-white shadow-soft">
+                <img src="{{ static_asset(association.logo) }}" alt="Logo Ask for Success" class="h-full w-full object-contain p-1.5" />
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-afs-accent">Association</p>
+                <p class="text-sm font-semibold text-afs-text">Ask for Success</p>
+              </div>
+            </a>
+
+            <nav class="hidden items-center gap-6 lg:flex" aria-label="Navigation principale">
+              {% for item in navigation %}
+              <a href="{{ item.href }}" class="text-sm font-medium text-afs-text/72 transition hover:text-afs-primary">{{ item.label }}</a>
+              {% endfor %}
+            </nav>
+
+            <div class="flex items-center gap-3">
+              <a href="#contact" class="button-primary hidden sm:inline-flex">Contact</a>
+              <button class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-afs-line bg-white/90 text-afs-primary lg:hidden" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">Menu</button>
+            </div>
+          </div>
+
+          <nav id="mobile-nav" class="mt-4 hidden rounded-3xl border border-afs-line bg-white p-4 shadow-soft lg:hidden" aria-label="Navigation mobile">
+            <div class="grid gap-3">
+              {% for item in navigation %}
+              <a href="{{ item.href }}" class="rounded-2xl px-4 py-3 text-sm font-medium text-afs-text/75 transition hover:bg-afs-soft hover:text-afs-primary">{{ item.label }}</a>
+              {% endfor %}
+              <a href="#contact" class="button-primary mt-2 sm:hidden">Contact</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <main id="main-content" tabindex="-1">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="mt-20 border-t border-white/10 bg-[#180927] text-white">
+      <div class="container-shell grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="relative h-14 w-14 overflow-hidden rounded-2xl border border-white/10 bg-white">
+              <img src="{{ static_asset(association.logo) }}" alt="Logo Ask for Success" class="h-full w-full object-contain p-1.5" />
+            </div>
+            <div>
+              <p class="eyebrow border-white/15 bg-white/10 text-white">Ask for Success</p>
+            </div>
+          </div>
+          <h2 class="text-3xl font-semibold">Une association marocaine engagee pour l orientation, les competences et l impact terrain.</h2>
+          <p class="max-w-xl text-sm leading-7 text-white/72">{{ association.description }}</p>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">Navigation</p>
+          <div class="mt-4 space-y-3">
+          {% for item in navigation %}
+          <a href="{{ item.href }}" class="block text-sm text-white/72 transition hover:text-white">{{ item.label }}</a>
+          {% endfor %}
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">Coordonnees</p>
+          <div class="mt-4 space-y-3 text-sm text-white/72">
+          <p class="m-0">{{ contact.city }}</p>
+          <a href="mailto:{{ contact.email }}" class="block transition hover:text-white">{{ contact.email }}</a>
+          {% for phone in contact.phones %}
+          <a href="tel:{{ phone }}" class="block transition hover:text-white">{{ phone }}</a>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='flask/js/site.js') }}"></script>
+    </div>
+  </body>
+</html>

@@ -22,7 +22,7 @@ export default function Footer() {
             </div>
           </div>
           <h2 className="text-3xl font-semibold">
-            Une association marocaine engagée pour l'orientation, les compétences et l'impact terrain.
+            Une association marocaine engagée pour l&apos;orientation, les compétences et l&apos;impact terrain.
           </h2>
           <p className="max-w-xl text-sm leading-7 text-white/72">{meta.description}</p>
         </div>

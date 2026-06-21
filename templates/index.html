@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="space-y-32 pb-24">
+  <section id="accueil" class="relative overflow-x-hidden pb-16 pt-24 lg:pb-20 lg:pt-28">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-[#1D0B31]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-[#230B3F]/90 via-[#402063]/80 to-[#11051D]/95"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(217,70,239,0.12),transparent_40%)]"></div>
+      <div class="hero-orb hero-orb-a"></div>
+      <div class="hero-orb hero-orb-b"></div>
+      <div class="hero-orb hero-orb-c"></div>
+    </div>
+
+    <div class="container-shell relative z-10 grid gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+      <div class="max-w-2xl space-y-7 reveal">
+        <div class="inline-flex items-center gap-3 rounded-full border border-white/15 bg-gradient-to-r from-white/15 to-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-white/95 backdrop-blur-md transition-all duration-300 hover:border-white/25 hover:bg-white/20">
+          <span class="h-2.5 w-2.5 rounded-full bg-gradient-to-br from-fuchsia-300 to-fuchsia-500 shadow-[0_0_16px_rgba(232,121,249,0.75)] animate-pulse"></span>
+          <span>Presentation institutionnelle</span>
+        </div>
+        <h1 class="max-w-xl bg-gradient-to-br from-white via-white/95 to-fuchsia-100 bg-clip-text text-4xl font-bold leading-[1.05] text-transparent sm:text-5xl lg:text-6xl">{{ association.homepage.hero.title }}</h1>
+        <p class="max-w-xl text-lg leading-8 text-white/85 sm:text-xl">{{ association.homepage.hero.description }}</p>
+
+        <div class="flex flex-wrap gap-3">
+          {% for item in association.homepage.hero.spotlight[:3] %}
+          <span class="rounded-full border border-white/20 bg-gradient-to-r from-white/15 to-white/5 px-4 py-2 text-sm font-medium text-white/95 backdrop-blur-md transition-all duration-300 hover:border-fuchsia-400/40 hover:bg-white/20 hover:shadow-[0_0_20px_rgba(232,121,249,0.2)]">{{ item }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="#missions" class="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-fuchsia-500 to-purple-600 px-8 py-4 text-base font-semibold text-white shadow-[0_0_40px_-8px_rgba(217,70,239,0.5)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_60px_-8px_rgba(217,70,239,0.7)] active:scale-95">
+            <span class="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <span class="relative">Decouvrir nos missions</span>
+            <svg class="relative h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="#contact" class="group inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/10 hover:shadow-[0_0_40px_-8px_rgba(255,255,255,0.15)] active:scale-95">Nous contacter</a>
+        </div>
+      </div>
+
+      <div class="hero-media relative mx-auto w-full max-w-[580px] lg:translate-x-20 reveal delay-1">
+        <div class="relative rounded-[2.75rem] border border-white/20 bg-gradient-to-b from-white/10 to-white/5 p-3 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] backdrop-blur-md transition-all duration-700 hover:border-white/30 hover:shadow-[0_40px_120px_-20px_rgba(232,121,249,0.3)]">
+          <div class="overflow-hidden rounded-[2.15rem]">
+            <div class="relative h-[320px] sm:h-[360px]">
+              <img src="{{ static_asset(association.featured_image) }}" alt="Equipe Ask for Success" class="h-full w-full object-cover object-[78%_center]" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#150721]/40 via-transparent to-white/10"></div>
+              <div class="absolute left-5 top-5 inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white/[0.95] px-4 py-3 text-afs-text shadow-lg backdrop-blur-xl transition-transform duration-300 hover:scale-105">
+                <div class="relative h-10 w-10 overflow-hidden rounded-xl bg-white">
+                  <img src="{{ static_asset(association.logo) }}" alt="Logo Ask for Success" class="h-full w-full object-contain p-1.5" />
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-afs-primary">Ask for Success</p>
+                  <p class="text-sm font-semibold text-gray-800">Association de jeunesse</p>
+                </div>
+              </div>
+            </div>
+            <div class="border-t border-white/10 bg-gradient-to-br from-[#17091f]/96 to-[#0d050a]/96 px-5 py-5 backdrop-blur-sm sm:px-6 sm:py-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-fuchsia-200/85">Impact terrain</p>
+              <p class="mt-3 text-base font-medium leading-7 text-white/95">Nous accompagnons les jeunes avec des actions educatives, culturelles et solidaires concretes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-3 sm:grid lg:hidden">
+          {% for stat in stats[:2] %}
+          <article class="rounded-2xl border border-white/10 bg-gradient-to-br from-[#2d1540]/80 via-[#1a0c24]/92 to-[#150721]/90 px-4 py-4 shadow-[0_22px_40px_-18px_rgba(0,0,0,0.55)] backdrop-blur-xl">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-fuchsia-200/80">{{ stat.category }}</p>
+            <h3 class="mt-3 bg-gradient-to-r from-white to-fuchsia-100 bg-clip-text text-3xl font-bold text-transparent">{{ stat.value }}</h3>
+            <p class="mt-2 text-sm leading-6 text-white/80">{{ stat.label }}</p>
+          </article>
+          {% endfor %}
+        </div>
+
+        <div class="hero-floating-badges pointer-events-none absolute inset-0 hidden lg:block">
+          {% for stat in stats[:2] %}
+          <article class="hero-float-badge {% if loop.index == 1 %}hero-float-badge-a{% else %}hero-float-badge-b{% endif %}">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-fuchsia-200/80">{{ stat.category }}</p>
+            <p class="mt-3 bg-gradient-to-r from-white to-fuchsia-100 bg-clip-text text-3xl font-bold text-transparent">{{ stat.value }}</p>
+            <p class="mt-2 text-sm leading-6 text-white/80">{{ stat.label }}</p>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="a-propos" class="container-shell relative z-10 w-full pt-8 reveal">
+    <div class="grid gap-6 rounded-[2.5rem] bg-gradient-to-r from-afs-primary to-purple-600 p-8 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(102,51,153,0.5)] sm:p-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <p class="mb-6 inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white">A propos</p>
+        <h2 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl">Une association marocaine jeune, structuree et engagee.</h2>
+      </div>
+      <div class="grid gap-4">
+        {% for highlight in association.highlights %}
+        <article class="rounded-2xl border border-white/10 bg-white/10 px-6 py-5 text-white/90 shadow-sm backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-md reveal delay-{{ loop.index }}">{{ highlight }}</article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="missions" class="container-shell">
+    <div class="mx-auto max-w-3xl text-center reveal">
+      <p class="eyebrow">Mission / Vision / Valeurs</p>
+      <h2 class="mt-5 text-4xl leading-tight sm:text-5xl">L essence de notre engagement.</h2>
+      <p class="mt-5 text-sm leading-8 text-afs-text/75 sm:text-base">
+        Trois reperes simples et clairs pour orienter nos actions, nos partenariats et notre impact dans la duree.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-8 lg:grid-cols-3">
+      {% for item in summary_items %}
+      <article class="section-panel group p-6 transition duration-300 hover:-translate-y-1 reveal delay-{{ loop.index }}">
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-afs-soft text-afs-primary">
+          {% if item.title == 'Mission' %}
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2 13 13l-3.8 1.8L11 11l3.8-1.8Z"/></svg>
+          {% elif item.title == 'Vision' %}
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3Z"/></svg>
+          {% else %}
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-6-3.8-6-8.5A3.5 3.5 0 0 1 12 9a3.5 3.5 0 0 1 6 2.5C18 16.2 12 20 12 20Z"/><path d="M5 16.5H3.5A1.5 1.5 0 0 1 2 15v-.5A1.5 1.5 0 0 1 3.5 13H6m13 3.5h1.5A1.5 1.5 0 0 0 22 15v-.5A1.5 1.5 0 0 0 20.5 13H18"/></svg>
+          {% endif %}
+        </div>
+        <h3 class="mt-5 text-2xl font-semibold">{{ item.title }}</h3>
+        <p class="mt-3 text-sm leading-7 text-afs-text/75">{{ item.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="galerie" class="container-shell">
+    <div class="mx-auto flex max-w-2xl flex-col items-center justify-center text-center reveal">
+      <p class="eyebrow">La galerie</p>
+      <h2 class="mt-4 text-4xl leading-tight text-afs-text sm:text-5xl">L action en images.</h2>
+      <p class="mt-4 text-base leading-8 text-afs-text/75">
+        Des ateliers, des rencontres et des actions de terrain qui montrent concretement comment
+        l association agit aupres des jeunes.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {% for item in gallery[:6] %}
+      <article class="section-panel group overflow-hidden reveal delay-{{ loop.index }}">
+        <div class="relative h-72 overflow-hidden">
+          <img src="{{ static_asset(item.image) }}" alt="{{ item.title }}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#180927]/90 via-[#180927]/20 to-transparent"></div>
+          <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-white/68">{{ item.category }}</p>
+            <h3 class="mt-2 text-2xl font-semibold">{{ item.title }}</h3>
+          </div>
+        </div>
+        <div class="p-6 text-sm leading-7 text-afs-text/75">{{ item.description }}</div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="equipe" class="container-shell">
+    <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+      <div class="reveal">
+        <p class="eyebrow">L equipe</p>
+        <h2 class="mt-5 text-4xl leading-tight sm:text-5xl">Les jeunes talents derriere l impact.</h2>
+        <p class="mt-5 text-sm leading-8 text-afs-text/75 sm:text-base">
+          Une equipe mobilisee pour concevoir, coordonner et faire grandir des actions utiles sur le terrain.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2">
+        {% for member in team[:4] %}
+        <article class="section-panel p-6 transition duration-300 hover:-translate-y-1 reveal delay-{{ loop.index }}">
+          <div class="flex items-center gap-4">
+            <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-gradient-to-br from-afs-primary to-afs-accent text-xl font-bold text-white">
+              {{ member.initials }}
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold">{{ member.name }}</h3>
+              <p class="text-sm text-afs-text/72">{{ member.role }}</p>
+            </div>
+          </div>
+          <p class="mt-5 text-sm leading-7 text-afs-text/75">{{ member.focus }}</p>
+          <p class="mt-4 text-sm italic leading-7 text-afs-primary/80">"{{ member.quote }}"</p>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative z-10 w-full overflow-hidden">
+    <div class="relative z-10 mb-12 mt-[-2rem] w-full overflow-hidden border-y border-afs-line/40 bg-white/80 py-10 backdrop-blur-md">
+      <div class="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-20 bg-gradient-to-r from-white to-transparent sm:block"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-20 bg-gradient-to-l from-white to-transparent sm:block"></div>
+
+      <div class="container-shell mb-10 text-center">
+        <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-afs-text/40">Ils nous ont fait confiance</p>
+      </div>
+
+      <div class="flex">
+        <div class="marquee-track flex min-w-max whitespace-nowrap items-center gap-14 px-12 sm:gap-24">
+          {% for i in range(2) %}
+            {% for partner in partners %}
+            <article class="group relative flex flex-col items-center justify-center px-4 transition-all duration-500 hover:scale-105">
+              <div class="relative flex h-14 w-28 items-center justify-center drop-shadow-transparent transition-all duration-500 group-hover:drop-shadow-[0_10px_20px_rgba(102,51,153,0.2)] sm:h-20 sm:w-40">
+                {% if partner.logo %}
+                <img src="{{ static_asset(partner.logo) }}" alt="Logo {{ partner.name }}" class="h-full w-full object-contain opacity-60 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0" />
+                {% else %}
+                <span class="text-3xl font-black text-afs-text/25 transition-all duration-700 group-hover:text-afs-primary sm:text-5xl">{{ partner.mark or partner.name }}</span>
+                {% endif %}
+              </div>
+              <div class="mt-3 text-center sm:absolute sm:-bottom-8 sm:mt-0 sm:translate-y-3 sm:opacity-0 sm:transition-all sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
+                <p class="text-sm font-extrabold tracking-tight text-afs-text">{{ partner.name }}</p>
+                <p class="mt-0.5 text-[9px] font-bold uppercase tracking-widest text-fuchsia-500">{{ partner.label }}</p>
+              </div>
+            </article>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="container-shell mt-14">
+        <div class="grid gap-8 rounded-[2rem] border border-afs-line bg-white px-6 py-6 shadow-[0_20px_50px_-18px_rgba(0,0,0,0.15)] sm:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
+          <div class="max-w-2xl">
+            <p class="text-[11px] font-bold uppercase tracking-[0.24em] text-afs-primary">Collecte solidaire</p>
+            <h3 class="mt-3 text-3xl font-semibold leading-tight text-afs-text">Soutenir Chabab for Atlas via Kiwi Collecte</h3>
+            <p class="mt-4 text-base leading-8 text-afs-text/72">
+              Kiwi Collecte heberge la campagne de don. Vous pouvez contribuer directement en ligne
+              ou scanner le QR code pour ouvrir la page de collecte depuis votre telephone.
+            </p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a href="{{ fundraiser.url }}" target="_blank" rel="noreferrer" class="button-primary">Faire un don</a>
+              <a href="{{ fundraiser.url }}" target="_blank" rel="noreferrer" class="button-secondary">Ouvrir Kiwi Collecte</a>
+            </div>
+          </div>
+
+          <a href="{{ fundraiser.url }}" target="_blank" rel="noreferrer" class="mx-auto block rounded-[1.75rem] border border-afs-line bg-afs-soft/40 p-4 transition hover:-translate-y-1 hover:shadow-lg">
+            <div class="relative aspect-square w-full max-w-[240px] overflow-hidden rounded-[1.25rem] bg-white">
+              <img src="{{ static_asset(fundraiser.qr_code) }}" alt="QR code Kiwi Collecte" class="h-full w-full object-cover" />
+            </div>
+            <p class="mt-4 text-center text-sm font-medium text-afs-text/72">Scanner pour acceder a la collecte</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container-shell pb-10">
+    <div class="group grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
+      <div class="reveal">
+        <p class="eyebrow">Contact / Partenariat</p>
+        <h2 class="mt-5 text-4xl leading-tight sm:text-5xl">Construisons l avenir ensemble.</h2>
+        <p class="mt-5 text-sm leading-8 text-afs-text/75 sm:text-base">
+          Que vous souhaitiez devenir benevole, partenaire ou simplement prendre contact,
+          notre equipe vous repond.
+        </p>
+
+        <div class="mt-10 rounded-3xl border border-afs-line bg-gradient-to-br from-afs-soft/50 to-white/80 p-8 shadow-sm backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:shadow-lg">
+          <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-afs-primary text-white shadow-md transition-transform hover:scale-110">
+            <span class="text-2xl font-semibold">AFS</span>
+          </div>
+          <h3 class="mb-3 text-xl font-bold text-afs-text">Rejoignez le mouvement</h3>
+          <p class="text-base font-medium leading-relaxed text-afs-text/75">
+            AFS se construit a travers les rencontres, les synergies et des engagements
+            durables. Nous cherchons des personnes et des structures pretes a agir avec nous.
+          </p>
+        </div>
+      </div>
+
+      <div class="mx-auto w-full max-w-lg lg:mx-0">
+        <div class="rounded-3xl border border-gray-100 bg-white p-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] transition-all duration-500 group-hover:scale-[1.02] hover:shadow-[0_30px_60px_-12px_rgba(100,50,250,0.15)] reveal delay-2">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-afs-primary">Formulaire</p>
+          <h3 class="mt-4 text-3xl font-semibold">Preparer un message</h3>
+          <p class="mt-4 text-sm leading-7 text-afs-text/75">
+            Ce formulaire prepare un email vers l equipe AFS. En cliquant sur le bouton,
+            votre messagerie s ouvrira avec les informations deja remplies.
+          </p>
+
+          <form id="contact-form" data-email="{{ contact.email }}" class="mt-8 grid gap-5">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <label class="grid gap-2 text-sm font-medium text-afs-text">Nom complet
+                <input type="text" name="name" placeholder="Votre nom" required class="rounded-full border border-afs-line bg-afs-soft px-5 py-4 transition focus:border-afs-primary focus:bg-white" />
+              </label>
+              <label class="grid gap-2 text-sm font-medium text-afs-text">Email
+                <input type="email" name="email" placeholder="vous@exemple.com" required class="rounded-full border border-afs-line bg-afs-soft px-5 py-4 transition focus:border-afs-primary focus:bg-white" />
+              </label>
+            </div>
+
+            <label class="grid gap-2 text-sm font-medium text-afs-text">Sujet
+              <input type="text" name="subject" placeholder="Objet du message" class="rounded-full border border-afs-line bg-afs-soft px-5 py-4 transition focus:border-afs-primary focus:bg-white" />
+            </label>
+
+            <label class="grid gap-2 text-sm font-medium text-afs-text">Message
+              <textarea name="message" rows="6" placeholder="Decrivez votre besoin" required class="rounded-3xl border border-afs-line bg-afs-soft px-5 py-4 transition focus:border-afs-primary focus:bg-white"></textarea>
+            </label>
+
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <button type="submit" class="button-primary">Ouvrir ma messagerie</button>
+              <div aria-live="polite" class="space-y-1 text-sm">
+                <p id="form-status" class="text-afs-text/55">Aucun faux envoi n est simule: vous validez ensuite depuis votre messagerie.</p>
+                <p class="text-afs-text/65">Email direct:
+                  <a href="mailto:{{ contact.email }}" class="font-medium text-afs-primary underline-offset-4 hover:underline">{{ contact.email }}</a>
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -28,7 +28,7 @@ export default function TeamCard({ member }) {
           </span>
         ))}
       </div>
-      <p className="mt-5 text-sm italic leading-7 text-afs-primary/80">"{member.quote}"</p>
+      <p className="mt-5 text-sm italic leading-7 text-afs-primary/80">&quot;{member.quote}&quot;</p>
     </article>
   );
 }

@@ -110,10 +110,10 @@ export default function HomePage() {
         <Reveal slide="up">
           <div className="mx-auto flex max-w-2xl flex-col items-center justify-center text-center">
             <p className="eyebrow">La galerie</p>
-            <h2 className="mt-4 text-4xl leading-tight text-afs-text sm:text-5xl">L'action en images.</h2>
+            <h2 className="mt-4 text-4xl leading-tight text-afs-text sm:text-5xl">L&apos;action en images.</h2>
             <p className="mt-4 text-base leading-8 text-afs-text/75">
               Des ateliers, des rencontres et des actions de terrain qui montrent concrètement comment
-              l'association agit auprès des jeunes.
+              l&apos;association agit auprès des jeunes.
             </p>
           </div>
         </Reveal>

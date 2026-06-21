@@ -44,8 +44,8 @@ export default function ContactForm() {
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-afs-primary">Formulaire</p>
         <h2 className="mt-4 text-3xl font-semibold">Préparer un message</h2>
         <p className="mt-4 text-sm leading-7 text-afs-text/75">
-          Ce formulaire prépare un email réel vers l'équipe AFS. En cliquant sur le bouton,
-          votre messagerie s'ouvrira avec les informations déjà remplies.
+          Ce formulaire prépare un email réel vers l&apos;équipe AFS. En cliquant sur le bouton,
+          votre messagerie s&apos;ouvrira avec les informations déjà remplies.
         </p>
       </div>
 
@@ -97,11 +97,11 @@ export default function ContactForm() {
           <div aria-live="polite" className="space-y-1 text-sm">
             {status === "redirected" ? (
               <p className="text-afs-primary">
-                Votre messagerie devrait s'ouvrir. Si rien ne se passe, utilisez l'email direct ci-dessous.
+                Votre messagerie devrait s&apos;ouvrir. Si rien ne se passe, utilisez l&apos;email direct ci-dessous.
               </p>
             ) : (
               <p className="text-afs-text/55">
-                Aucun faux envoi n'est simulé: vous validez ensuite depuis votre messagerie.
+                Aucun faux envoi n&apos;est simulé: vous validez ensuite depuis votre messagerie.
               </p>
             )}
             <p className="text-afs-text/65">
